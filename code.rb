@@ -1,28 +1,23 @@
 menu = {
-  "Hamburger" => 4.00,
-  "Hot Dog" => 3.00,
-  "Fries" => 2.00,
-  "Chips" => 1.00,
-  "Water" => 1.25,
-  "Soda" => 1.50,
-  "Orange Soda" => 1.50
+  "hamburger" => 4.00,
+  "hot dog" => 3.00,
+  "fries" => 2.00,
+  "chips" => 1.00,
+  "water" => 1.25,
+  "soda" => 1.50,
+  "orange soda" => 1.50
 }
 
-# Gives greeting, take order
-# receives order from customer
-# outputs "Thanks! their total
-require'pry'
 puts "Welcome to Goodburger, home of the Goodburger! Can I take your order?"
 order = gets.chomp
-# binding.pry
 
-puts order.split(",").split(" ")
-# gsub(",", "")
-
-# menu.each do |item, price|
-#   if order.gsub(",", "") == item
-#     puts order.gsub(",", "") && price
-#   end
-# end
-
-# receive item, qunatity of item, price of item, total for order
+no_comma = order.split(", ")
+total = 0.0
+no_comma.each do |item|
+  if !menu[item]
+    puts "Sorry! We don't have '#{item}' on the menu."
+  else
+    total += menu[item].to_f
+  end
+end
+puts "Thanks, your total is $#{total}. Have a nice day!"
